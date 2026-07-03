@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get an expert orthopaedic opinion at OrthoNow. Book a consultation for knee or back pain in Bengaluru.">
+  <title>OrthoNow Consultation Landing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.25rem);
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --radius-sm: 0.5rem;
+      --radius-md: 0.875rem;
+      --radius-lg: 1.25rem;
+      --radius-full: 999px;
+      --shadow-sm: 0 1px 2px rgba(19, 31, 30, 0.08);
+      --shadow-md: 0 12px 32px rgba(19, 31, 30, 0.12);
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --font-body: 'Instrument Sans', Inter, system-ui, sans-serif;
+    }
+
+    :root, [data-theme="light"] {
+      --color-bg: #f5f7f6;
+      --color-surface: #ffffff;
+      --color-surface-2: #eef5f3;
+      --color-border: rgba(20, 35, 33, 0.12);
+      --color-text: #172321;
+      --color-text-muted: #5e6d69;
+      --color-primary: #0d7a72;
+      --color-primary-hover: #0a645d;
+      --color-primary-soft: #dff4f1;
+      --color-success: #0f6a44;
+      --color-success-soft: #dcf6ea;
+      --color-accent: #f2efe7;
+    }
+
+    * , *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top right, rgba(13, 122, 114, 0.08), transparent 32%),
+        linear-gradient(180deg, #f7faf8 0%, #f5f7f6 100%);
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    button, input { font: inherit; }
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: var(--space-4);
+      top: -3rem;
+      background: var(--color-text);
+      color: #fff;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-sm);
+      z-index: 1000;
+    }
+    .skip-link:focus { top: var(--space-4); }
+
+    .page-shell {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: var(--space-4) 0 var(--space-12);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-3) 0 var(--space-6);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 0.9rem;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #12a39a 100%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy span {
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .city-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,0.7);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      backdrop-filter: blur(12px);
+    }
+
+    main {
+      display: grid;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .hero {
+      display: grid;
+      gap: var(--space-8);
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: var(--space-2);
+      padding: 0.5rem 0.9rem;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: var(--text-2xl);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      color: var(--color-text-muted);
+      max-width: 60ch;
+    }
+
+    .benefits {
+      display: grid;
+      gap: var(--space-3);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .benefits li {
+      display: flex;
+      align-items: start;
+      gap: var(--space-3);
+      color: var(--color-text);
+      font-size: var(--text-sm);
+    }
+
+    .benefits strong { font-weight: 700; }
+
+    .bullet {
+      margin-top: 0.3rem;
+      width: 0.85rem;
+      height: 0.85rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+      box-shadow: 0 0 0 5px rgba(13, 122, 114, 0.12);
+      flex: 0 0 auto;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: var(--space-6);
+    }
+
+    .form-card,
+    .trust-card,
+    .stats-card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(10px);
+    }
+
+    .form-card {
+      padding: var(--space-6);
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .form-card h2,
+    .trust-card h2 {
+      margin: 0;
+      font-size: var(--text-lg);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .microcopy {
+      margin: 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .form-stack {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .field {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      min-height: 3.25rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: #fff;
+      padding: 0.95rem 1rem;
+      color: var(--color-text);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    input::placeholder { color: #8b9793; }
+    input:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(13, 122, 114, 0.14);
+    }
+
+    .cta-button {
+      width: 100%;
+      min-height: 3.5rem;
+      border: 0;
+      border-radius: var(--radius-md);
+      background: var(--color-primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: var(--text-base);
+      letter-spacing: -0.01em;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+      box-shadow: 0 10px 22px rgba(13, 122, 114, 0.24);
+    }
+
+    .cta-button:hover,
+    .cta-button:focus-visible {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .cta-button:active { transform: translateY(0); }
+
+    .disclaimer {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    .error {
+      font-size: var(--text-xs);
+      color: #b42318;
+      min-height: 1em;
+    }
+
+    .thank-you {
+      display: none;
+      gap: var(--space-4);
+      padding: var(--space-5);
+      border-radius: var(--radius-md);
+      background: var(--color-success-soft);
+      border: 1px solid rgba(15, 106, 68, 0.18);
+    }
+
+    .thank-you.active { display: grid; }
+
+    .thank-you-badge {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--color-success);
+      color: #fff;
+    }
+
+    .trust-card {
+      padding: var(--space-6);
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .trust-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .metric {
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      background: var(--color-surface-2);
+      border: 1px solid rgba(20, 35, 33, 0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: var(--text-lg);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: var(--space-1);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+    }
+
+    .review {
+      padding: var(--space-4);
+      border-left: 0;
+      border-radius: var(--radius-md);
+      background: var(--color-accent);
+      color: var(--color-text);
+      font-size: var(--text-sm);
+    }
+
+    .review strong { display: block; margin-top: var(--space-2); }
+
+    .stats-card {
+      padding: var(--space-5);
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: center;
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid rgba(20, 35, 33, 0.08);
+    }
+
+    .stat-row:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .stat-row span {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .stat-row strong {
+      font-size: var(--text-base);
+      letter-spacing: -0.02em;
+    }
+
+    .sticky-mobile-cta {
+      position: sticky;
+      bottom: var(--space-4);
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-full);
+      background: var(--color-text);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+      margin-top: var(--space-2);
+    }
+
+    @media (min-width: 860px) {
+      main { gap: var(--space-10); }
+      .hero {
+        grid-template-columns: minmax(0, 1.1fr) minmax(360px, 440px);
+        gap: var(--space-8);
+      }
+      .hero-grid { position: sticky; top: var(--space-4); }
+      .sticky-mobile-cta { display: none; }
+    }
+
+    @media (max-width: 859px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .trust-metrics { grid-template-columns: 1fr; }
+      h1 { max-width: 12ch; }
+    }
+
+    @media (max-width: 520px) {
+      .page-shell { width: min(100% - 1rem, 1120px); }
+      .form-card, .trust-card, .stats-card { padding: var(--space-5); }
+      .cta-button, input { min-height: 3.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="page-shell">
+    <header class="topbar" aria-label="Page header">
+      <a class="brand" href="#hero" aria-label="OrthoNow home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 6.5C7 4.567 8.567 3 10.5 3C12.433 3 14 4.567 14 6.5V10H10.5C8.567 10 7 8.433 7 6.5Z" fill="currentColor"/>
+            <path d="M10 14C10 11.791 11.791 10 14 10H17.5C19.433 10 21 11.567 21 13.5C21 15.433 19.433 17 17.5 17H14C11.791 17 10 15.209 10 13Z" fill="currentColor" opacity="0.9"/>
+            <path d="M3 14.5C3 12.567 4.567 11 6.5 11H10V14.5C10 16.433 8.433 18 6.5 18C4.567 18 3 16.433 3 14.5Z" fill="currentColor" opacity="0.75"/>
+          </svg>
+        </span>
+        <span class="brand-copy">OrthoNow <span>Orthopaedic care across Bengaluru, Hyderabad & Chennai</span></span>
+      </a>
+      <div class="city-chip" aria-label="Target location">
+        <span aria-hidden="true">📍</span>
+        Bengaluru consultations for working professionals
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="hero" aria-labelledby="hero-heading">
+        <div class="hero-copy">
+          <div class="eyebrow">Expert orthopaedic opinion in under 60 seconds</div>
+          <h1 id="hero-heading">Get expert help for knee or back pain before it slows your work week.</h1>
+          <p>Book a consultation with OrthoNow and speak to an orthopaedic team that understands pain triggered by long commutes, desk hours, workouts, and daily movement. Leave your details and the clinic team will call you back to schedule your consultation.</p>
+          <ul class="benefits" aria-label="Key benefits">
+            <li><span class="bullet" aria-hidden="true"></span><span><strong>9 specialist clinics</strong> across South India with city-level convenience.</span></li>
+            <li><span class="bullet" aria-hidden="true"></span><span><strong>Fast call-back workflow</strong> designed for busy professionals who do not want a long form.</span></li>
+            <li><span class="bullet" aria-hidden="true"></span><span><strong>Focused orthopaedic evaluation</strong> for persistent knee pain, back pain, stiffness, and movement discomfort.</span></li>
+          </ul>
+          <section class="stats-card" aria-label="Trust highlights">
+            <div class="stat-row"><span>Consultation flow</span><strong>2-field lead capture</strong></div>
+            <div class="stat-row"><span>Follow-up intent</span><strong>Callback to confirm appointment</strong></div>
+            <div class="stat-row"><span>Campaign objective</span><strong>High-intent consultation enquiries</strong></div>
+          </section>
+          <a class="sticky-mobile-cta" href="#consultation-form">Book your consultation</a>
+        </div>
+
+        <div class="hero-grid">
+          <section class="form-card" aria-labelledby="form-heading">
+            <div>
+              <h2 id="form-heading">Book your consultation</h2>
+              <p class="microcopy">Minimal form, faster response. Enter your name and phone number and our team will contact you.</p>
+            </div>
+
+            <form id="consultation-form" novalidate>
+              <div class="form-stack">
+                <div class="field">
+                  <label for="name">Full name</label>
+                  <input id="name" name="name" type="text" inputmode="text" autocomplete="name" placeholder="Enter your name" required>
+                  <div class="error" id="name-error" aria-live="polite"></div>
+                </div>
+
+                <div class="field">
+                  <label for="phone">Phone number</label>
+                  <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="Enter your 10-digit phone number" required>
+                  <div class="error" id="phone-error" aria-live="polite"></div>
+                </div>
+              </div>
+
+              <button class="cta-button" type="submit">Get my orthopaedic callback</button>
+            </form>
+
+            <div class="thank-you" id="thank-you-state" aria-live="polite">
+              <div class="thank-you-badge" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 7L9 18L4 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h2>Thanks, your enquiry has been received.</h2>
+                <p class="microcopy">An OrthoNow team member will contact you shortly to help with the next step for your consultation.</p>
+              </div>
+            </div>
+
+            <p class="disclaimer">By submitting, you agree to be contacted by OrthoNow regarding your consultation enquiry.</p>
+          </section>
+
+          <section class="trust-card" aria-labelledby="trust-heading">
+            <div>
+              <h2 id="trust-heading">Why this page should convert better</h2>
+              <p class="microcopy">The page removes extra friction, keeps the ask small, and gives clear trust signals near the CTA instead of sending users hunting for confidence.</p>
+            </div>
+
+            <div class="trust-metrics">
+              <div class="metric"><strong>9</strong><span>clinic pages ready for local intent tracking</span></div>
+              <div class="metric"><strong>2 fields</strong><span>to reduce abandonment on mobile</span></div>
+              <div class="metric"><strong>1 CTA</strong><span>so attention stays on form completion</span></div>
+            </div>
+
+            <div class="review">
+              “I ignored my back pain for months because booking felt like a hassle. OrthoNow called quickly, explained the next step clearly, and I got seen without wasting half a day.”
+              <strong>— Example patient story for trust placement</strong>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    const form = document.getElementById('consultation-form');
+    const thankYouState = document.getElementById('thank-you-state');
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const nameError = document.getElementById('name-error');
+    const phoneError = document.getElementById('phone-error');
+
+    const formContext = {
+      form_id: 'consultation_lp_primary',
+      page_variant: 'v1_minimal_2_field',
+      lead_type: 'consultation_enquiry',
+      clinic_preference: 'not_collected_on_lp',
+      source: 'Google Ads - Consultation Landing Page'
+    };
+
+    let formStarted = false;
+
+    function sanitizeName(value) {
+      return value.trim().replace(/\s+/g, ' ');
+    }
+
+    function normalizePhone(value) {
+      return value.replace(/\D/g, '').slice(-10);
+    }
+
+    function validateForm() {
+      const nameValue = sanitizeName(nameInput.value);
+      const phoneValue = normalizePhone(phoneInput.value);
+      let valid = true;
+
+      nameError.textContent = '';
+      phoneError.textContent = '';
+
+      if (nameValue.length < 2) {
+        nameError.textContent = 'Please enter your full name.';
+        valid = false;
+      }
+
+      if (!/^\d{10}$/.test(phoneValue)) {
+        phoneError.textContent = 'Please enter a valid 10-digit phone number.';
+        valid = false;
+      }
+
+      return { valid, nameValue, phoneValue };
+    }
+
+    [nameInput, phoneInput].forEach((input) => {
+      input.addEventListener('focus', () => {
+        if (!formStarted) {
+          formStarted = true;
+          window.dataLayer.push({
+            event: 'consultation_form_start',
+            form_id: formContext.form_id,
+            page_variant: formContext.page_variant,
+            lead_type: formContext.lead_type,
+            source: formContext.source
+          });
+        }
+      }, { once: true });
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const { valid, nameValue, phoneValue } = validateForm();
+      if (!valid) return;
+
+      window.dataLayer.push({
+        event: 'consultation_form_submitted',
+        form_id: formContext.form_id,
+        page_variant: formContext.page_variant,
+        lead_type: formContext.lead_type,
+        source: formContext.source,
+        phone_last4: phoneValue.slice(-4),
+        user_name_present: Boolean(nameValue)
+      });
+
+      window.dataLayer.push({
+        event: 'thank_you_state_view',
+        form_id: formContext.form_id,
+        submission_status: 'success',
+        page_variant: formContext.page_variant
+      });
+
+      form.hidden = true;
+      thankYouState.classList.add('active');
+    });
+  </script>
+</body>
+</html>
